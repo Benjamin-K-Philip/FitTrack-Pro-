@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitTrack Pro — Health & Fitness Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="logo-icon">⚡</span>
+    <span class="logo-text">FIT<span class="accent">TRACK</span></span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" data-section="dashboard">Dashboard</a>
+    <a class="nav-link" data-section="workouts">Workouts</a>
+    <a class="nav-link" data-section="exercises">Exercises</a>
+    <a class="nav-link" data-section="progress">Progress</a>
+    <a class="nav-link" data-section="goals">Goals</a>
+    <a class="nav-link" data-section="memberships">Membership</a>
+  </div>
+  <div class="user-menu">
+    <span class="user-greeting">Logged in as <strong id="current-user-name">—</strong></span>
+    <button class="btn-logout" id="logout-btn">SIGN OUT</button>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section id="dashboard" class="section active">
+    <div class="section-header">
+      <h1 class="display-title">DASHBOARD</h1>
+      <p class="subtitle">Welcome back, <span id="welcome-name">athlete</span>.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card stat-1">
+        <div class="stat-label">TOTAL WORKOUTS</div>
+        <div class="stat-value" id="stat-workouts">—</div>
+      </div>
+      <div class="stat-card stat-2">
+        <div class="stat-label">CURRENT BMI</div>
+        <div class="stat-value" id="stat-bmi">—</div>
+      </div>
+      <div class="stat-card stat-3">
+        <div class="stat-label">ACTIVE GOALS</div>
+        <div class="stat-value" id="stat-goals">—</div>
+      </div>
+      <div class="stat-card stat-4">
+        <div class="stat-label">BADGES EARNED</div>
+        <div class="stat-value" id="stat-badges">—</div>
+      </div>
+      <div class="stat-card stat-5">
+        <div class="stat-label">MEMBERSHIP</div>
+        <div class="stat-value" id="stat-plan" style="font-size:1.5rem">—</div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="panel">
+        <h2 class="panel-title">YOUR WEEKLY ACTIVITY</h2>
+        <div id="weekly-chart" class="chart-container"></div>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">LEADERBOARD</h2>
+        <div id="leaderboard-list"></div>
+      </div>
+    </div>
+
+    <div class="panel full-width">
+      <h2 class="panel-title">POPULAR EXERCISES</h2>
+      <div id="top-exercises"></div>
+    </div>
+  </section>
+
+  <section id="workouts" class="section">
+    <div class="section-header">
+      <h1 class="display-title">MY WORKOUTS</h1>
+      <button class="btn-primary" onclick="openModal('workout-modal')">+ LOG WORKOUT</button>
+    </div>
+    <div class="panel"><div id="workout-list"></div></div>
+  </section>
+
+  <section id="exercises" class="section">
+    <div class="section-header">
+      <h1 class="display-title">EXERCISE LIBRARY</h1>
+      <button class="btn-primary" onclick="openModal('exercise-modal')">+ ADD EXERCISE</button>
+    </div>
+    <div class="filters">
+      <input type="text" id="ex-search" placeholder="Search exercises..." class="filter-input">
+      <select id="ex-filter-cat" class="filter-input"><option value="">All categories</option></select>
+    </div>
+    <div class="panel"><div id="exercise-list" class="exercise-grid"></div></div>
+  </section>
+
+  <section id="progress" class="section">
+    <div class="section-header">
+      <h1 class="display-title">MY PROGRESS</h1>
+      <button class="btn-primary" onclick="openModal('progress-modal')">+ LOG WEIGHT</button>
+    </div>
+    <div class="panel">
+      <h2 class="panel-title">WEIGHT TIMELINE</h2>
+      <div id="progress-chart"></div>
+    </div>
+    <div class="panel">
+      <div id="progress-list"></div>
+    </div>
+  </section>
+
+  <section id="goals" class="section">
+    <div class="section-header">
+      <h1 class="display-title">MY GOALS</h1>
+      <button class="btn-primary" onclick="openModal('goal-modal')">+ NEW GOAL</button>
+    </div>
+    <div class="panel"><div id="goal-list" class="goal-grid"></div></div>
+  </section>
+
+  <section id="memberships" class="section">
+    <div class="section-header">
+      <h1 class="display-title">MEMBERSHIP</h1>
+    </div>
+    <div class="panel">
+      <h2 class="panel-title">YOUR CURRENT PLAN</h2>
+      <div id="current-membership"></div>
+    </div>
+    <div class="panel">
+      <h2 class="panel-title">CHOOSE A PLAN</h2>
+      <div id="plans-grid" class="plans-grid"></div>
+    </div>
+    <div class="panel">
+      <h2 class="panel-title">MEMBERSHIP HISTORY</h2>
+      <div id="membership-history"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Modals -->
+<div id="workout-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('workout-modal')">&times;</span>
+    <h2>LOG WORKOUT</h2>
+    <form id="workout-form">
+      <label>Date<input type="date" id="w-date" required></label>
+      <label>Duration (minutes)<input type="number" id="w-duration" required min="1"></label>
+      <label>Notes<textarea id="w-notes"></textarea></label>
+      <fieldset>
+        <legend>Add Exercises</legend>
+        <div id="w-exercises"></div>
+        <button type="button" class="btn-secondary" onclick="addExerciseRow()">+ Add Exercise</button>
+      </fieldset>
+      <button type="submit" class="btn-primary">SAVE WORKOUT</button>
+    </form>
+  </div>
+</div>
+
+<div id="goal-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('goal-modal')">&times;</span>
+    <h2>NEW GOAL</h2>
+    <form id="goal-form">
+      <label>Goal Type
+        <select id="g-type">
+          <option>Weight Loss</option><option>Weight Gain</option>
+          <option>Muscle Gain</option><option>Endurance</option>
+          <option>Strength</option><option>Flexibility</option>
+        </select>
+      </label>
+      <div class="form-row">
+        <label>Target Value<input type="number" step="0.1" id="g-target" required></label>
+        <label>Unit<input id="g-unit" placeholder="kg, min, reps" required></label>
+      </div>
+      <label>Deadline<input type="date" id="g-deadline" required></label>
+      <button type="submit" class="btn-primary">CREATE GOAL</button>
+    </form>
+  </div>
+</div>
+
+<div id="progress-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('progress-modal')">&times;</span>
+    <h2>LOG WEIGHT</h2>
+    <form id="progress-form">
+      <label>Date<input type="date" id="p-date" required></label>
+      <label>Weight (kg)<input type="number" step="0.1" id="p-weight" required></label>
+      <label>Body Fat %<input type="number" step="0.1" id="p-fat"></label>
+      <label>Notes<textarea id="p-notes"></textarea></label>
+      <button type="submit" class="btn-primary">SAVE</button>
+    </form>
+  </div>
+</div>
+
+<div id="exercise-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('exercise-modal')">&times;</span>
+    <h2>NEW EXERCISE</h2>
+    <form id="exercise-form">
+      <label>Name<input id="e-name" required></label>
+      <div class="form-row">
+        <label>Category<select id="e-category" required></select></label>
+        <label>Muscle Group<select id="e-muscle" required></select></label>
+      </div>
+      <div class="form-row">
+        <label>Difficulty
+          <select id="e-diff"><option>Easy</option><option>Medium</option><option>Hard</option></select>
+        </label>
+        <label>Calories/min<input type="number" step="0.1" id="e-cal"></label>
+      </div>
+      <label>Description<textarea id="e-desc"></textarea></label>
+      <button type="submit" class="btn-primary">ADD EXERCISE</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

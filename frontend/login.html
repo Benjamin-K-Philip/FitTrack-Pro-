@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitTrack Pro — Sign In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-screen">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">FIT<span class="accent">TRACK</span></span>
+    </div>
+    <p class="auth-tagline">Health & Fitness Tracker</p>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">SIGN IN</button>
+      <button class="auth-tab" data-tab="signup">CREATE ACCOUNT</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="login-form" class="auth-form active">
+      <label>Email
+        <input type="email" id="login-email" required placeholder="you@example.com" autocomplete="email">
+      </label>
+      <label>Password
+        <input type="password" id="login-password" required placeholder="••••••••" autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn-primary btn-full">SIGN IN</button>
+      <div id="login-error" class="auth-error"></div>
+    </form>
+
+    <!-- SIGNUP -->
+    <form id="signup-form" class="auth-form">
+      <label>Full Name
+        <input id="signup-fullname" required placeholder="John Doe">
+      </label>
+      <label>Username
+        <input id="signup-username" required placeholder="johndoe" autocomplete="username">
+      </label>
+      <label>Email
+        <input type="email" id="signup-email" required placeholder="you@example.com" autocomplete="email">
+      </label>
+      <label>Password
+        <input type="password" id="signup-password" required placeholder="At least 6 characters" minlength="6" autocomplete="new-password">
+      </label>
+      <div class="form-row">
+        <label>Age
+          <input type="number" id="signup-age" min="13" max="119" placeholder="25">
+        </label>
+        <label>Gender
+          <select id="signup-gender">
+            <option value="">Prefer not to say</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Height (cm)
+          <input type="number" step="0.1" id="signup-height" placeholder="170">
+        </label>
+        <label>Weight (kg)
+          <input type="number" step="0.1" id="signup-weight" placeholder="65">
+        </label>
+      </div>
+      <label>Fitness Level
+        <select id="signup-level">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </label>
+      <button type="submit" class="btn-primary btn-full">CREATE ACCOUNT</button>
+      <div id="signup-error" class="auth-error"></div>
+    </form>
+
+    <p class="auth-hint">
+      First time? Click <strong>CREATE ACCOUNT</strong> to make a new account.<br>
+      Existing users sign in with their registered email and password.
+    </p>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.auth-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab === 'login' ? 'login-form' : 'signup-form';
+    document.getElementById(target).classList.add('active');
+    document.getElementById('login-error').textContent = '';
+    document.getElementById('signup-error').textContent = '';
+  });
+});
+
+// LOGIN
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errorBox = document.getElementById('login-error');
+  errorBox.textContent = '';
+
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, password})
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      // Save token + user info to localStorage
+      localStorage.setItem('fittrack_token', data.token);
+      localStorage.setItem('fittrack_user_id', data.user_id);
+      localStorage.setItem('fittrack_username', data.username);
+      localStorage.setItem('fittrack_full_name', data.full_name);
+      // Redirect to main app
+      window.location.href = '/app';
+    } else {
+      errorBox.textContent = data.error || 'Login failed';
+    }
+  } catch (err) {
+    errorBox.textContent = 'Network error. Is the server running?';
+  }
+});
+
+// SIGNUP
+document.getElementById('signup-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errorBox = document.getElementById('signup-error');
+  errorBox.textContent = '';
+
+  const data = {
+    full_name: document.getElementById('signup-fullname').value.trim(),
+    username:  document.getElementById('signup-username').value.trim(),
+    email:     document.getElementById('signup-email').value.trim(),
+    password:  document.getElementById('signup-password').value,
+    age:       +document.getElementById('signup-age').value || null,
+    gender:    document.getElementById('signup-gender').value || null,
+    height_cm: +document.getElementById('signup-height').value || null,
+    weight_kg: +document.getElementById('signup-weight').value || null,
+    fitness_level: document.getElementById('signup-level').value
+  };
+
+  try {
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem('fittrack_token', result.token);
+      localStorage.setItem('fittrack_user_id', result.user_id);
+      localStorage.setItem('fittrack_username', result.username);
+      localStorage.setItem('fittrack_full_name', result.full_name);
+      window.location.href = '/app';
+    } else {
+      errorBox.textContent = result.error || 'Signup failed';
+    }
+  } catch (err) {
+    errorBox.textContent = 'Network error. Is the server running?';
+  }
+});
+
+// If already logged in, redirect to app
+if (localStorage.getItem('fittrack_token')) {
+  // Verify token is still valid
+  fetch('/api/auth/me', {
+    headers: {'Authorization': 'Bearer ' + localStorage.getItem('fittrack_token')}
+  }).then(r => {
+    if (r.ok) window.location.href = '/app';
+    else {
+      // Token expired
+      localStorage.clear();
+    }
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>
