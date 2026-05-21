@@ -80,5 +80,9 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
 
 <br>
 
-➤ **Frontend (login.html, app.html, app.js, styles.css)** <br>
-The frontend is plain HTML/CSS/JS — no framework. **login.html** handles signup and login by calling the Flask **/api/auth/*** endpoints and saves the returned token to **localStorage. app.html** is the main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership. **app.js** fetches data from the Flask API and renders it dynamically into the DOM. **styles.css** provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
+➤ **Frontend (login.html, app.html, app.js, styles.css)**
+ - Built with plain HTML, CSS, and JavaScript — no framework used.
+ - **login.html:** Handles signup and login by calling the Flask /api/auth/* endpoints and saves the returned token to localStorage.
+ - **app.html:** The main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership.
+ - **app.js:** Fetches data from the Flask API and renders it dynamically into the DOM.
+ - **styles.css:** Provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
