@@ -16,7 +16,7 @@ This single SQL file builds the entire database and contains every structural el
 **14 Tables (Normalized Schema):** <br>
 The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. The tables are:
    - **users:—** stores account info, demographics (age, gender, height, weight), and a bcrypt password_hash.
-**membership_plans and memberships:—** model the subscription system (Free, Premium, Pro, Annual variants).
+   - **membership_plans and memberships:—** model the subscription system (Free, Premium, Pro, Annual variants).
 **exercise_categories, muscle_groups, and exercises:—** a normalized exercise library where each exercise belongs to one category and targets one muscle group.
 **workouts and workout_exercises:—** the latter is a junction table that resolves the many-to-many relationship between workouts and exercises (one workout has many exercises, and one exercise can appear in many workouts), with extra columns for sets, reps, weight, and duration.
 **progress_log:—** tracks weight, body fat percentage, and muscle mass over time, with a UNIQUE (user_id, log_date) constraint to prevent duplicate entries on the same day.
