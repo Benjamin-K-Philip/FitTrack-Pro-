@@ -14,7 +14,7 @@ This single SQL file builds the entire database and contains every structural el
  - **Database Creation:** Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
   
  - **14 Tables (Normalized Schema):** <br>
-The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. The tables are:
+The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. Following are the tables are:
    - **users:** Stores account info, demographics (age, gender, height, weight), and a bcrypt password_hash.
    - **membership_plans and memberships:** Model the subscription system (Free, Premium, Pro, Annual variants).
    - **exercise_categories, muscle_groups, and exercises:** A normalized exercise library where each exercise belongs to one category and targets one muscle group.
@@ -26,8 +26,11 @@ The schema is fully normalized with proper primary keys, foreign keys, CHECK con
    - **notifications:** System messages for goals, workouts, achievements, and announcements.
 
 
-Indexes: Five composite indexes are created on the most frequently queried columns (user_id + date combinations on workouts, progress_log, goals, meal_logs, and memberships) to speed up the dashboard and history queries.
-5 Triggers: Automate side-effects so that the database stays consistent without the application layer having to remember every rule. The DELIMITER // directive is used so multi-statement trigger bodies can be parsed correctly:
+ - **Indexes:** <br> 
+Five composite indexes are created on the most frequently queried columns (user_id + date combinations on workouts, progress_log, goals, meal_logs, and memberships) to speed up the dashboard and history queries.
+
+ - **5 Triggers:**  <br>
+Automate side-effects so that the database stays consistent without the application layer having to remember every rule. The DELIMITER // directive is used so multi-statement trigger bodies can be parsed correctly:
 
 trg_check_weight_goal — After a new progress_log row is inserted, automatically marks any active Weight Loss goal as 'Achieved' if the new weight has hit the target.
 trg_workout_milestone — After a workout is inserted, checks whether the user has reached exactly 10 workouts. If so, it inserts a Bronze badge into achievements and a congratulatory message into notifications.
