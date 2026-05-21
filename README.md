@@ -59,6 +59,7 @@ Pre-populates every table with sample records — 4 users (Alex, Sara, Mike, Pri
  The end of the file contains organized query examples covering basic SELECTs, multi-table JOINs (including a 5-table join), nested subqueries, correlated subqueries, aggregate functions with GROUP BY, and set operations (UNION).
 
 <br>
+
 ➤ **Python Backend (build_db_mysql.py, set_passwords.py, app.py)**
 The Python files act as the bridge between the SQL file and the live application. They all use the mysql-connector-python library to talk to MySQL.
 
