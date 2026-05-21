@@ -11,18 +11,19 @@ The FitTrack Pro system is built on a three-layer architecture: a MySQL database
 ➤ **MySQL Database (fittrack_database_mysql_func_and_proc.sql)**
 This single SQL file builds the entire database and contains every structural element of the project. It is organized into clearly labelled sections:
 
-  - **Database Creation:** Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
-14 Tables (Normalized Schema): The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. The tables are:
-
-users — stores account info, demographics (age, gender, height, weight), and a bcrypt password_hash.
-membership_plans and memberships — model the subscription system (Free, Premium, Pro, Annual variants).
-exercise_categories, muscle_groups, and exercises — a normalized exercise library where each exercise belongs to one category and targets one muscle group.
-workouts and workout_exercises — the latter is a junction table that resolves the many-to-many relationship between workouts and exercises (one workout has many exercises, and one exercise can appear in many workouts), with extra columns for sets, reps, weight, and duration.
-progress_log — tracks weight, body fat percentage, and muscle mass over time, with a UNIQUE (user_id, log_date) constraint to prevent duplicate entries on the same day.
-goals — fitness goals with type, target value, deadline, and status.
-foods and meal_logs — basic nutrition tracking module.
-achievements — badges (Bronze/Silver/Gold/Platinum) awarded to users.
-notifications — system messages for goals, workouts, achievements, and announcements.
+ - **Database Creation:** Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
+  
+**14 Tables (Normalized Schema):** <br>
+The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. The tables are:
+   - **users:—** stores account info, demographics (age, gender, height, weight), and a bcrypt password_hash.
+**membership_plans and memberships:—** model the subscription system (Free, Premium, Pro, Annual variants).
+**exercise_categories, muscle_groups, and exercises:—** a normalized exercise library where each exercise belongs to one category and targets one muscle group.
+**workouts and workout_exercises:—** the latter is a junction table that resolves the many-to-many relationship between workouts and exercises (one workout has many exercises, and one exercise can appear in many workouts), with extra columns for sets, reps, weight, and duration.
+**progress_log:—** tracks weight, body fat percentage, and muscle mass over time, with a UNIQUE (user_id, log_date) constraint to prevent duplicate entries on the same day.
+**goals:—** fitness goals with type, target value, deadline, and status.
+**foods and meal_logs:—** basic nutrition tracking module.
+**achievements:—** badges (Bronze/Silver/Gold/Platinum) awarded to users.
+**notifications:—** system messages for goals, workouts, achievements, and announcements.
 
 
 Indexes: Five composite indexes are created on the most frequently queried columns (user_id + date combinations on workouts, progress_log, goals, meal_logs, and memberships) to speed up the dashboard and history queries.
