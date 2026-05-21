@@ -170,4 +170,10 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
 ---
 
 
-## Demonstration - How the Project Works
+## Setup Instructions <br>
+  1. Make sure MySQL Server is running locally and update the password in DB_CONFIG inside build_db_mysql.py, set_passwords.py, and app.py to match your MySQL root password.
+  2. Install Python dependencies: pip install mysql-connector-python flask bcrypt.
+  3. Run python build_db_mysql.py to build the fittrack database with all tables, triggers, views, function, procedure, and seed data.
+  4. Run python set_passwords.py to set real bcrypt passwords for the seed users.
+  5. Run python app.py to start the Flask server on http://localhost:5000.
+  6. Open the URL in your browser and log in with any seed account (e.g. alex@fittrack.com / password123) or create a new account.
