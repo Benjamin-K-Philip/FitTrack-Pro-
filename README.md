@@ -65,11 +65,11 @@ The Python files act as the bridge between the SQL file and the live application
 
 - **build_db_mysql.py — The Database Builder:** <br>
 This is the script you run once to set up the database. It does the following: 
-1. Connects to the local MySQL server using credentials in DB_CONFIG.
-2. Checks if the fittrack database already exists and asks for confirmation before rebuilding.
-3. Reads fittrack_database_mysql_func_and_proc.sql from disk and feeds it to a custom parse_statements() function, which intelligently splits the file into individual statements while respecting DELIMITER // directives needed for the triggers, function, and procedure.
-4. Executes each statement through the MySQL connector cursor.
-5. Prints a summary showing the row count of every table, plus the names of all triggers and views that were created.
+ 1. Connects to the local MySQL server using credentials in DB_CONFIG.
+ 2. Checks if the fittrack database already exists and asks for confirmation before rebuilding.
+ 3. Reads fittrack_database_mysql_func_and_proc.sql from disk and feeds it to a custom parse_statements() function, which intelligently splits the file into individual statements while respecting DELIMITER // directives needed for the triggers, function, and procedure.
+ 4. Executes each statement through the MySQL connector cursor.
+ 5. Prints a summary showing the row count of every table, plus the names of all triggers and views that were created.
 
 
  - **set_passwords.py — Real Password Setup:** <br>
