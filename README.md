@@ -109,17 +109,17 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
 
 ## Project Structure <br>
  - **database/ :** Contains the main SQL script.
-   - **fittrack_database_mysql_func_and_proc.sql:** full schema, indexes, triggers, views, function, procedure, seed data, and sample queries.
+   - **fittrack_database_mysql_func_and_proc.sql:** Full schema, indexes, triggers, views, function, procedure, seed data, and sample queries.
    - **build_db_mysql.py:** Python script that parses and executes the SQL file to build the fittrack database.
-   - **set_passwords.py:** utility script that replaces placeholder password hashes with real bcrypt hashes for the seed users.
+   - **set_passwords.py:** Utility script that replaces placeholder password hashes with real bcrypt hashes for the seed users.
 
 
  - **backend/ :** Flask API server.
-   - app.py — Flask application with all REST API endpoints, authentication logic, and MySQL connection handling.
+   - **app.py:** Flask application with all REST API endpoints, authentication logic, and MySQL connection handling.
 
 
 - **frontend/ :** Static web client. 
-login.html — signup and login page.
-app.html — main single-page application shell with all sections (dashboard, workouts, exercises, progress, goals, membership).
-app.js — client-side logic that calls the Flask API and renders data.
-styles.css — full styling for the app and login pages.
+   - **login.html:** Signup and login page.
+   - **app.html:** Main single page application shell with all sections (dashboard, workouts, exercises, progress, goals, membership).
+   - **app.js:** Client-side logic that calls the Flask API and renders data.
+   - **styles.css:** Full styling for the app and login pages.
