@@ -11,7 +11,8 @@ The FitTrack Pro system is built on a three-layer architecture: a MySQL database
 ➤ **MySQL Database (fittrack_database_mysql_func_and_proc.sql)**
 This single SQL file builds the entire database and contains every structural element of the project. It is organized into clearly labelled sections:
 
- - **Database Creation:** Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
+ - **Database Creation:** <br>
+ Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
   
  - **14 Tables (Normalized Schema):** <br>
 The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. Following are the tables are:
