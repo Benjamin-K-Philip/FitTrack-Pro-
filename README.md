@@ -130,3 +130,17 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
  ## Entity Relationship (ER) Diagram
  <img width="1171" height="1251" alt="refer this-with triggers and indexesER Diagram-fittrack_database_mysql-func and proc" src="https://github.com/user-attachments/assets/c29b3ff2-af15-49e7-a6ec-54605ab54934" />
 
+ ---
+
+ ## Outputs
+ <img width="1366" height="720" alt="Screenshot (9904)" src="https://github.com/user-attachments/assets/494829e0-378e-48f3-8821-5debd2f2289c" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9905)" src="https://github.com/user-attachments/assets/b3df7b9a-38d8-4e45-bca2-a4cc3a3eb042" />
+<br>
+<img width="1366" height="718" alt="Screenshot (9906)" src="https://github.com/user-attachments/assets/1109e2e5-794e-4c04-af2b-de0faf2ca297" />
+<br>
+<img width="1366" height="722" alt="Screenshot (9922)" src="https://github.com/user-attachments/assets/e4682e48-c417-4054-9192-8c3588622930" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9908)" src="https://github.com/user-attachments/assets/b85665c3-2fc3-429a-b00b-f2456fab381a" />
+<br>
+
