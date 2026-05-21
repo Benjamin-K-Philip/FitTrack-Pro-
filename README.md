@@ -78,6 +78,7 @@ This is the script you run once to set up the database. It does the following:
  - **app.py — The Flask API Server:** <br>
 Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a database connection per request (via Flask's g object), runs parameterized SQL queries against the fittrack database, and returns JSON. Routes include /api/auth/login, /api/auth/signup, /api/workouts, /api/exercises, /api/goals, /api/progress, /api/memberships, and dashboard endpoints. Passwords are hashed and verified with bcrypt, and a simple in-memory token store handles session authentication.
 
+<br>
 
-➤ **Frontend (login.html, app.html, app.js, styles.css)**
+➤ **Frontend (login.html, app.html, app.js, styles.css)** <br>
 The frontend is plain HTML/CSS/JS — no framework. **login.html** handles signup and login by calling the Flask **/api/auth/*** endpoints and saves the returned token to **localStorage. app.html** is the main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership. **app.js** fetches data from the Flask API and renders it dynamically into the DOM. **styles.css** provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
