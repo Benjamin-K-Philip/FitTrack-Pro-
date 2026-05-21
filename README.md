@@ -1,4 +1,11 @@
 # FitTrack Pro
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-green)
 
 ## Description
 A full-stack health and fitness tracker powered by a 14-table MySQL database, a Python Flask backend, and an HTML/CSS/JavaScript frontend. Demonstrates normalized schema design, foreign keys, indexes, triggers, stored functions, procedures, views, and advanced SQL queries. Users can log workouts, track progress, set goals, earn achievements, and manage memberships.
