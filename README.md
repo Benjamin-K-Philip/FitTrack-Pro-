@@ -46,10 +46,18 @@ Automate side-effects so that the database stays consistent without the applicat
    - **v_workout_details:** Joins workouts with their user and counts the exercises per workout.
 
 
-Stored Function — fn_calculate_bmi: Takes weight (kg) and height (cm) as arguments and returns the BMI rounded to two decimal places using the standard formula weight / (height_m)².
-Stored Procedure — sp_user_workout_summary: Accepts a user_id and returns the user's total workouts, total minutes, and total calories burned.
-Seed Data: Pre-populates every table with sample records — 4 users (Alex, Sara, Mike, Priya), 18 exercises, 5 membership plans, sample workouts, progress logs, goals, foods, meal logs, achievements, and notifications — so the application is immediately demoable.
-15 Sample Queries: The end of the file contains organized query examples covering basic SELECTs, multi-table JOINs (including a 5-table join), nested subqueries, correlated subqueries, aggregate functions with GROUP BY, and set operations (UNION).
+ - **Function — fn_calculate_bmi:** <br>
+Takes weight (kg) and height (cm) as arguments and returns the BMI rounded to two decimal places using the standard formula weight / (height_m)².
+
+ - **Procedure — sp_user_workout_summary:** <br>
+Accepts a user_id and returns the user's total workouts, total minutes, and total calories burned.
+
+ - **Seed Data:** <br>
+Pre-populates every table with sample records — 4 users (Alex, Sara, Mike, Priya), 18 exercises, 5 membership plans, sample workouts, progress logs, goals, foods, meal logs, achievements, and notifications — so the application is immediately demoable.
+
+ - **15 Sample Queries:** <br> 
+ The end of the file contains organized query examples covering basic SELECTs, multi-table JOINs (including a 5-table join), nested subqueries, correlated subqueries, aggregate functions with GROUP BY, and set operations (UNION).
+
 
 ➤ **Python Backend (build_db_mysql.py, set_passwords.py, app.py)**
 The Python files act as the bridge between the SQL file and the live application. They all use the mysql-connector-python library to talk to MySQL.
