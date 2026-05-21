@@ -29,20 +29,21 @@ The schema is fully normalized with proper primary keys, foreign keys, CHECK con
  - **Indexes:** <br> 
 Five composite indexes are created on the most frequently queried columns (user_id + date combinations on workouts, progress_log, goals, meal_logs, and memberships) to speed up the dashboard and history queries.
 
+
  - **5 Triggers:**  <br>
-Automate side-effects so that the database stays consistent without the application layer having to remember every rule. The DELIMITER // directive is used so multi-statement trigger bodies can be parsed correctly:
+Automate side-effects so that the database stays consistent without the application layer having to remember every rule. The DELIMITER // directive is used so multi-statement trigger bodies can be parsed correctly. Following are the triggers:
 
-trg_check_weight_goal — After a new progress_log row is inserted, automatically marks any active Weight Loss goal as 'Achieved' if the new weight has hit the target.
-trg_workout_milestone — After a workout is inserted, checks whether the user has reached exactly 10 workouts. If so, it inserts a Bronze badge into achievements and a congratulatory message into notifications.
-trg_update_workout_calories — After an exercise is added to a workout, automatically recalculates and updates the workout's total_calories based on each exercise's calories_per_min and duration_min.
-trg_sync_user_weight — Keeps the users.weight_kg profile field synced with the latest progress_log entry.
-trg_membership_welcome — When a paid membership is created, inserts a personalized welcome notification that includes the plan name and end date.
+   - **trg_check_weight_goal:** After a new progress_log row is inserted, automatically marks any active Weight Loss goal as 'Achieved' if the new weight has hit the target.
+   - **trg_workout_milestone:** After a workout is inserted, checks whether the user has reached exactly 10 workouts. If so, it inserts a Bronze badge into achievements and a congratulatory message into notifications.
+   - **trg_update_workout_calories:** After an exercise is added to a workout, automatically recalculates and updates the workout's total_calories based on each exercise's calories_per_min and duration_min.
+   - **trg_sync_user_weight:** Keeps the users.weight_kg profile field synced with the latest progress_log entry.
+   - **trg_membership_welcome:** When a paid membership is created, inserts a personalized welcome notification that includes the plan name and end date.
 
 
-2 Views: Pre-computed virtual tables that simplify dashboard queries:
-
-v_user_dashboard — aggregates each user's BMI, total workouts, active goals, and badge count into one row.
-v_workout_details — joins workouts with their user and counts the exercises per workout.
+ - **2 Views:** <br>
+ Pre-computed virtual tables that simplify dashboard into the following queries:
+   - **v_user_dashboard:** Aggregates each user's BMI, total workouts, active goals, and badge count into one row.
+   - **v_workout_details:** Joins workouts with their user and counts the exercises per workout.
 
 
 Stored Function — fn_calculate_bmi: Takes weight (kg) and height (cm) as arguments and returns the BMI rounded to two decimal places using the standard formula weight / (height_m)².
