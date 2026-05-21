@@ -143,4 +143,31 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
 <br>
 <img width="1366" height="720" alt="Screenshot (9908)" src="https://github.com/user-attachments/assets/b85665c3-2fc3-429a-b00b-f2456fab381a" />
 <br>
+<img width="1366" height="720" alt="Screenshot (9909)" src="https://github.com/user-attachments/assets/e30b52dd-f0e3-4a3b-864c-634d521f00ea" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9911)" src="https://github.com/user-attachments/assets/5f09bdef-9d6b-459c-b13f-5aeeedb05d88" />
+<br>
+<img width="1366" height="724" alt="Screenshot (9912)" src="https://github.com/user-attachments/assets/e80ae660-6616-4555-a69c-38c8df1cb9c6" />
+<br>
+<img width="1366" height="722" alt="Screenshot (9913)" src="https://github.com/user-attachments/assets/d21b92b3-ed05-4e89-932b-4368fa29268c" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9914)" src="https://github.com/user-attachments/assets/1a69c57f-7dc1-4bd2-9817-6b6b44e69ef5" />
+<br>
+<img width="1366" height="722" alt="Screenshot (9915)" src="https://github.com/user-attachments/assets/864dbba6-63b3-436d-a3e5-05d26edcc495" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9916)" src="https://github.com/user-attachments/assets/dadd290c-1cbe-48fa-abc9-f52e747b1335" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9917)" src="https://github.com/user-attachments/assets/2d9cadcf-bcbc-4ef5-a2c2-b5207abb508c" />
+<br>
+<img width="1366" height="722" alt="Screenshot (9918)" src="https://github.com/user-attachments/assets/22c3cc15-f2aa-4657-b94f-6667db8633e9" />
+<br>
+<img width="1366" height="726" alt="Screenshot (9919)" src="https://github.com/user-attachments/assets/6eb1bdad-c63e-42fd-87c9-3297ea637636" />
+<br>
+<img width="1366" height="720" alt="Screenshot (9920)" src="https://github.com/user-attachments/assets/6290641c-e8e3-493a-a07a-2bcf352033e8" />
+<br>
+<img width="1366" height="724" alt="Screenshot (9921)" src="https://github.com/user-attachments/assets/071e1350-a294-4cbd-bf70-16150b7099c7" />
 
+---
+
+
+## Demonstration - How the Project Works
