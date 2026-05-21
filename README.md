@@ -8,7 +8,7 @@ A full-stack health and fitness tracker powered by a 14-table MySQL database, a 
 ## How the Code Works <br>
 The FitTrack Pro system is built on a three-layer architecture: a MySQL database (data layer), a Flask Python backend (logic and API layer), and an HTML/JS frontend (presentation layer). The database is the heart of the project — every action a user takes on the website ultimately translates into SQL operations against the fittrack database.
 
-➤ **MySQL Database (fittrack_database_mysql_func_and_proc.sql)**
+➤ **MySQL Database (fittrack_database_mysql_func_and_proc.sql)** <br>
 This single SQL file builds the entire database and contains every structural element of the project. It is organized into clearly labelled sections:
 
  - **Database Creation:** <br>
