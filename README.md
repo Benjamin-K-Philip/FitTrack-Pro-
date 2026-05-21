@@ -64,7 +64,7 @@ Pre-populates every table with sample records — 4 users (Alex, Sara, Mike, Pri
 The Python files act as the bridge between the SQL file and the live application. They all use the mysql-connector-python library to talk to MySQL.
 
 - **build_db_mysql.py — The Database Builder:** <br>
-This is the script you run once to set up the database. It does the following: 
+The python script does the following: 
  1. Connects to the local MySQL server using credentials in DB_CONFIG.
  2. Checks if the fittrack database already exists and asks for confirmation before rebuilding.
  3. Reads fittrack_database_mysql_func_and_proc.sql from disk and feeds it to a custom parse_statements() function, which intelligently splits the file into individual statements while respecting DELIMITER // directives needed for the triggers, function, and procedure.
@@ -86,3 +86,40 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
  - **app.html:** The main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership.
  - **app.js:** Fetches data from the Flask API and renders it dynamically into the DOM.
  - **styles.css:** Provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
+
+---
+
+
+## Features <br>
+ - Complete user authentication with bcrypt-hashed passwords (signup, login, logout, token-based sessions).
+ - **Workout logging** with multiple exercises per workout, including sets, reps, weight, and duration.
+ - **Exercise library** searchable by name, filterable by category and muscle group.
+ - **Progress tracking** — log weight, body fat percentage, and muscle mass over time, with auto-sync to the user profile.
+ - **Goal setting** with six goal types (Weight Loss, Weight Gain, Muscle Gain, Endurance, Strength, Flexibility) and auto-achievement detection via triggers.
+ - **Membership plans** — Free, Premium, Pro, and annual variants, with feature gating (max goals, nutrition tracking, coach access).
+ - **Achievements & badges** (Bronze, Silver, Gold, Platinum) awarded automatically by triggers.
+ - **Notifications** for goals, workouts, achievements, and system messages.
+ - **Live dashboard** with auto-calculated BMI (using the fn_calculate_bmi SQL function), total workouts, active goals, badge count, and a weekly activity chart.
+ - **Leaderboard** ranking users by workout count.
+ - Demonstrates **15 SQL queries** covering joins, subqueries, correlated subqueries, aggregates, and set operations.
+- Demonstrates **5 triggers, 2 views, 1 stored function, and 1 stored procedure**.
+
+---
+
+
+## Project Structure <br>
+ - **database/ :** Contains the main SQL script.
+   - **fittrack_database_mysql_func_and_proc.sql:** full schema, indexes, triggers, views, function, procedure, seed data, and sample queries.
+   - **build_db_mysql.py:** Python script that parses and executes the SQL file to build the fittrack database.
+   - **set_passwords.py:** utility script that replaces placeholder password hashes with real bcrypt hashes for the seed users.
+
+
+ - **backend/ :** Flask API server.
+   - app.py — Flask application with all REST API endpoints, authentication logic, and MySQL connection handling.
+
+
+- **frontend/ :** Static web client. 
+login.html — signup and login page.
+app.html — main single-page application shell with all sections (dashboard, workouts, exercises, progress, goals, membership).
+app.js — client-side logic that calls the Flask API and renders data.
+styles.css — full styling for the app and login pages.
