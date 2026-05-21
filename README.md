@@ -72,9 +72,12 @@ This is the script you run once to set up the database. It does the following:
 5. Prints a summary showing the row count of every table, plus the names of all triggers and views that were created.
 
 
-set_passwords.py — Real Password Setup: The seed users in the SQL file have placeholder password hashes. This helper script connects to the fittrack database, generates a real bcrypt hash for the password password123, and updates every seed user's password_hash column with it — so the four demo accounts (alex, sara, mike, priya) can actually log in.
-app.py — The Flask API Server: Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a database connection per request (via Flask's g object), runs parameterized SQL queries against the fittrack database, and returns JSON. Routes include /api/auth/login, /api/auth/signup, /api/workouts, /api/exercises, /api/goals, /api/progress, /api/memberships, and dashboard endpoints. Passwords are hashed and verified with bcrypt, and a simple in-memory token store handles session authentication.
+ - **set_passwords.py — Real Password Setup:** <br>
+ The seed users in the SQL file have placeholder password hashes. This helper script connects to the fittrack database, generates a real bcrypt hash for the password password123, and updates every seed user's password_hash column with it — so the four demo accounts (alex, sara, mike, priya) can actually log in.
+ 
+ - **app.py — The Flask API Server:** <br>
+Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a database connection per request (via Flask's g object), runs parameterized SQL queries against the fittrack database, and returns JSON. Routes include /api/auth/login, /api/auth/signup, /api/workouts, /api/exercises, /api/goals, /api/progress, /api/memberships, and dashboard endpoints. Passwords are hashed and verified with bcrypt, and a simple in-memory token store handles session authentication.
 
 
 ➤ **Frontend (login.html, app.html, app.js, styles.css)**
-The frontend is plain HTML/CSS/JS — no framework. login.html handles signup and login by calling the Flask /api/auth/* endpoints and saves the returned token to localStorage. app.html is the main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership. app.js fetches data from the Flask API and renders it dynamically into the DOM. styles.css provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
+The frontend is plain HTML/CSS/JS — no framework. **login.html** handles signup and login by calling the Flask **/api/auth/*** endpoints and saves the returned token to **localStorage. app.html** is the main single-page application with sections for Dashboard, Workouts, Exercises, Progress, Goals, and Membership. **app.js** fetches data from the Flask API and renders it dynamically into the DOM. **styles.css** provides the dark, modern fitness-themed look using the Bebas Neue and Outfit fonts.
