@@ -123,3 +123,10 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
    - **app.html:** Main single page application shell with all sections (dashboard, workouts, exercises, progress, goals, membership).
    - **app.js:** Client-side logic that calls the Flask API and renders data.
    - **styles.css:** Full styling for the app and login pages.
+
+ ---
+
+
+ ## Entity Relationship (ER) Diagram
+ <img width="1171" height="1251" alt="refer this-with triggers and indexesER Diagram-fittrack_database_mysql-func and proc" src="https://github.com/user-attachments/assets/c29b3ff2-af15-49e7-a6ec-54605ab54934" />
+
