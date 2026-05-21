@@ -13,7 +13,7 @@ This single SQL file builds the entire database and contains every structural el
 
  - **Database Creation:** Begins with CREATE DATABASE IF NOT EXISTS fittrack and USE fittrack to ensure a clean working environment. Each table is dropped (with DROP TABLE IF EXISTS) in reverse dependency order before being created, so the script can be re-run safely.
   
-**14 Tables (Normalized Schema):** <br>
+ - **14 Tables (Normalized Schema):** <br>
 The schema is fully normalized with proper primary keys, foreign keys, CHECK constraints, UNIQUE constraints, and ON DELETE CASCADE rules. The tables are:
    - **users:** Stores account info, demographics (age, gender, height, weight), and a bcrypt password_hash.
    - **membership_plans and memberships:** Model the subscription system (Free, Premium, Pro, Annual variants).
