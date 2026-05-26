@@ -133,8 +133,8 @@ Exposes a RESTful API that the frontend calls. It uses mysql.connector to open a
 
  ---
 
- ## Outputs
- <img width="1366" height="720" alt="Screenshot (9904)" src="https://github.com/user-attachments/assets/494829e0-378e-48f3-8821-5debd2f2289c" />
+ ## Output
+<img width="1366" height="720" alt="Screenshot (9904)" src="https://github.com/user-attachments/assets/494829e0-378e-48f3-8821-5debd2f2289c" />
 <br>
 <img width="1366" height="720" alt="Screenshot (9905)" src="https://github.com/user-attachments/assets/b3df7b9a-38d8-4e45-bca2-a4cc3a3eb042" />
 <br>
